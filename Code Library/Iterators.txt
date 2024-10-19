@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    //Iterators
+    int n;
+    cin>>n;
+    vector<int>v;
+    /*
+    Decalaration:
+    vector<int> :: iterator it; 
+    */
+    for(int i=0; i<n; i++){
+        int x;
+        cin>>x;
+        v.push_back(x);
+    }
+    for(auto it=v.begin(); it!=v.end(); it++) cout<<(*it)<<endl;
+    
+    //Range based loop
+    for(auto &val : v){
+        cout<<val<<endl;
+    }
+    return 0;
+}

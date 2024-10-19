@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+
+    //prefix sum algo
+    int n;
+    cin>>n;
+    int arr[n+1];
+    arr[0]=0;
+    for(int i=1; i<=n; i++)cin>>arr[i];
+    for(int i=1; i<=n; i++)arr[i]+=arr[i-1];
+    for(int i=1; i<=n; i++)cout<<arr[i]<<" ";
+    cout<<endl;
+    
+    
+    
+    
+    
+    //index l to index r sum
+    int l,r;
+    cin>>l>>r;
+    cout<<arr[r]-arr[l-1]<<endl;
+    
+    
+    
+    
+    
+    
+    //accessing k-th element
+    int k;
+    cin>>k;
+    cout<<arr[k]-arr[k-1]<<endl;
+    
+    
+    
+    
+    
+    //prefix sum in 2-D array
+    int a,b;
+    cin>>a>>b;
+    int mat[a+2][b+2],pref[a+2][b+2];
+    for(int i=0; i<=a+1; i++){
+        for(int j=0; j<=b+1; j++){
+           pref[i][j]=0;
+        }
+    }
+    for(int i=1; i<=a; i++){
+        for(int j=1; j<=b; j++){
+            cin>>mat[i][j];
+        }
+    }
+    
+    for(int i=1; i<=a; i++){
+        for(int j=1; j<=b; j++){
+            pref[i][j]=mat[i][j]+pref[i-1][j]+pref[i][j-1]-pref[i-1][j-1];
+        }
+    }
+    int x,y;
+    cin>>x>>y;
+    cout<<pref[x][y]<<endl;
+    
+    
+    
+    
+    
+    //(x1,y1) to (x2,y2) sum
+    int x1,y1,x2,y2;
+    cin>>x1>>y1>>x2>>y2;
+    
+    cout<<pref[x2][y2]-pref[x1-1][y2]-pref[x2][y1-1]+pref[x1-1][y1-1]<<endl;
+    return 0;
+}
